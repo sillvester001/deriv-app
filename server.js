@@ -89,80 +89,25 @@ if (directoryExists(coreDist)) {
   logDirectoryContents(coreDist);
 }
 
+// Log bot dist/bot contents if it exists
+const botDistBotPath = path.join(botDistPath, 'bot');
+if (directoryExists(botDistBotPath)) {
+  console.log('\n========== BOT DIST/BOT DIRECTORY ==========');
+  logDirectoryContents(botDistBotPath);
+  // Also log js subdirectory
+  const botJsPath = path.join(botDistBotPath, 'js');
+  if (directoryExists(botJsPath)) {
+    console.log('\n========== BOT DIST/BOT/JS DIRECTORY ==========');
+    logDirectoryContents(botJsPath);
+  }
+}
+
 // Serve static files from core first
 app.use(express.static(coreDist));
 
 // Handle bot static files specifically under /bot path
 const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist');
 app.use('/bot', express.static(botDistPath));
-
-// For non-hashed JS files within /bot/, find the corresponding hashed file
-app.get('/bot/js/:filename', (req, res, next) => {
-  const filename = req.params.filename;
-  console.log(`Request for /bot/ JS file: ${filename}`);
-  
-  // Look only within the bot's dist directory
-  const jsDir = path.join(botDistPath, 'bot/js');
-  
-  if (directoryExists(jsDir)) {
-    console.log(`Checking in directory: ${jsDir}`);
-    try {
-      const files = fs.readdirSync(jsDir);
-      
-      if (!filename.includes('.hash.')) {
-        const baseName = path.basename(filename, '.js');
-        const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
-        
-        if (hashedFile) {
-          console.log(`Found hashed file: ${hashedFile}`);
-          return res.sendFile(path.join(jsDir, hashedFile));
-        }
-      } else if (files.includes(filename)) {
-        console.log(`Found exact file: ${filename}`);
-        return res.sendFile(path.join(jsDir, filename));
-      }
-    } catch (err) {
-      console.error(`Error reading directory ${jsDir}:`, err);
-    }
-  }
-  
-  console.log(`JS file not found: ${filename}`);
-  next();
-});
-
-// For non-hashed CSS files within /bot/, find the corresponding hashed file
-app.get('/bot/css/:filename', (req, res, next) => {
-  const filename = req.params.filename;
-  console.log(`Request for /bot/ CSS file: ${filename}`);
-
-  // Look only within the bot's dist directory
-  const cssDir = path.join(botDistPath, 'bot/css');
-  
-  if (directoryExists(cssDir)) {
-    console.log(`Checking in directory: ${cssDir}`);
-    try {
-      const files = fs.readdirSync(cssDir);
-      
-      if (!filename.includes('.hash.')) {
-        const baseName = path.basename(filename, '.css');
-        const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
-        
-        if (hashedFile) {
-          console.log(`Found hashed file: ${hashedFile}`);
-          return res.sendFile(path.join(cssDir, hashedFile));
-        }
-      } else if (files.includes(filename)) {
-        console.log(`Found exact file: ${filename}`);
-        return res.sendFile(path.join(cssDir, filename));
-      }
-    } catch (err) {
-      console.error(`Error reading directory ${cssDir}:`, err);
-    }
-  }
-  
-  console.log(`CSS file not found: ${filename}`);
-  next();
-});
 
 // Catch-all route for SPA
 app.get('*', (req, res) => {
