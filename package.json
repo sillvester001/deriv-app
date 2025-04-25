@@ -95,7 +95,7 @@
         "publish_package": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run publish_package $2 ;}; f",
         "serve": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run serve $npm_config_open;}; f",
         "start": "ls -la && node server.js",
-        "build:heroku": "npx nx build @deriv/shared && npx nx build @deriv/components && npx nx build @deriv/translations && npx nx build @deriv/api-types && npx nx build @deriv/hooks && npx nx build @deriv/utils && npx nx build @deriv/account && npx nx build @deriv/cashier && npx nx build @deriv/p2p && npx nx build @deriv/trader && npx nx build @deriv/reports && npx nx build @deriv/cfd && npx nx build @deriv/appstore && npx nx build @deriv/wallets && npx nx build @deriv/bot-skeleton && npx nx build @deriv/bot-web-ui && npx nx build @deriv/core",
+        "build:heroku": "npx nx build @deriv/shared && npx nx build @deriv/components && npx nx build @deriv/translations && npx nx build @deriv/hooks && npx nx build @deriv/utils && npx nx build @deriv/account && npx nx build @deriv/cashier && npx nx build @deriv/p2p && npx nx build @deriv/trader && npx nx build @deriv/reports && npx nx build @deriv/cfd && npx nx build @deriv/appstore && npx nx build @deriv/wallets && npx nx build @deriv/bot-skeleton && npx nx build @deriv/bot-web-ui && npx nx build @deriv/core",
         "heroku-postbuild": "npm run build:heroku",
         "test": "f () { npm run test:stylelint  && npm run test:eslint-all && npm run test:jest  ;}; f",
         "test:stylelint": "stylelint \"./packages/*/src/**/*.s(a|c)ss\"",
