@@ -94,7 +94,7 @@
         "prettify": "./node_modules/.bin/prettier --config ./.prettierrc --write \"./packages/*/{stories,script,src,build}/**/*.{js,jsx,ts,tsx,scss}\"",
         "publish_package": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run publish_package $2 ;}; f",
         "serve": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run serve $npm_config_open;}; f",
-        "start": "node server.js",
+        "start": "ls -la && node server.js",
         "build:heroku": "npx nx build @deriv/bot-skeleton && npx nx build @deriv/bot-web-ui",
         "heroku-postbuild": "npm run build:heroku",
         "test": "f () { npm run test:stylelint  && npm run test:eslint-all && npm run test:jest  ;}; f",
