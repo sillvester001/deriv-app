@@ -13,6 +13,8 @@ import { AnalyticsInitializer } from 'Utils/Analytics';
 
 // Set the desired App ID for this deployment
 localStorage.setItem('config.app_id', '70686');
+// Set the correct Server URL based on documentation
+localStorage.setItem('config.server_url', 'ws.derivws.com');
 
 AnalyticsInitializer();
 if (
