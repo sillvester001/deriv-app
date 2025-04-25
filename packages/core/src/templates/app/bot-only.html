@@ -7,9 +7,20 @@
     <link rel="icon" href="/public/images/favicons/favicon-16.png" sizes="16x16">
     <link rel="icon" href="/public/images/favicons/favicon-32.png" sizes="32x32">
     <link rel="icon" href="/public/images/favicons/favicon-96.png" sizes="96x96">
-    <meta http-equiv="refresh" content="0;url=/bot">
+    <script>
+        // Check if we're not already on the /bot path
+        if (window.location.pathname !== '/bot' && window.location.pathname !== '/bot/') {
+            window.location.href = '/bot';
+        }
+    </script>
 </head>
 <body>
-    <h1>Redirecting to Deriv Bot...</h1>
+    <div id="app">
+        <h1 style="text-align: center; margin-top: 50px;">Loading Deriv Bot...</h1>
+        <div style="display: flex; justify-content: center; margin-top: 30px;">
+            <img src="/public/images/common/logos/platform_logos/ic_platform_deriv_512x512.png" 
+                 alt="Deriv Logo" style="width: 100px; height: auto;">
+        </div>
+    </div>
 </body>
 </html> 

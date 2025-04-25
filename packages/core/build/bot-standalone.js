@@ -21,6 +21,14 @@ module.exports = {
                 removeComments: true,
             }
         }),
+        new HtmlWebpackPlugin({
+            template: 'src/templates/app/bot-only.html',
+            filename: 'bot/index.html',
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+            }
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -38,4 +46,9 @@ module.exports = {
             ],
         }),
     ],
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 4096000
+    }
 }; 
