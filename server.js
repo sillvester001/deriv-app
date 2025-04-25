@@ -104,41 +104,22 @@ if (directoryExists(botDistBotPath)) {
   }
 }
 
-// Serve static files from core first
+// Serve static files from core ONLY
 app.use(express.static(coreDist));
 
-// Handle bot static files specifically under /bot path, serving from the dist/bot subdir
-// const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist'); // Defined earlier
-// const botDistBotPath = path.join(botDistPath, 'bot'); // Defined earlier
-app.use('/bot', express.static(botDistBotPath)); // Serve from dist/bot for /bot requests
-
-// Catch-all route for SPA
+// Catch-all route for SPA - ALWAYS serve core index.html
 app.get('*', (req, res) => {
   const url = req.url;
   console.log(`Catch-all route handling: ${url}`);
 
-  const botIndexPath = path.join(botDistPath, 'bot/index.html');
   const coreIndexPath = path.join(coreDist, 'index.html');
-
-  // Serve bot index.html for /bot routes OR the root path /
-  if (url === '/' || url.startsWith('/bot')) {
-    console.log(`Checking for bot index.html at: ${botIndexPath}`);
-    if (fileExists(botIndexPath)) {
-      console.log(`Found bot index.html at: ${botIndexPath}`);
-      return res.sendFile(botIndexPath);
-    }
-    console.log('No bot index.html found, falling back...');
-    // Fall through to core index if bot index is missing but URL was / or /bot
-  }
-
-  // For all other routes, or if bot index wasn't found, serve the main core index.html
   console.log(`Checking for core index.html at: ${coreIndexPath}`);
   if (fileExists(coreIndexPath)) {
     console.log(`Serving core index.html from: ${coreIndexPath}`);
     return res.sendFile(coreIndexPath);
   }
 
-  console.log('No index.html found at all, returning 404');
+  console.log('Core index.html not found, returning 404');
   res.status(404).send('Not found');
 });
 
