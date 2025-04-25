@@ -93,7 +93,7 @@
         "publish_package": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run publish_package $2 ;}; f",
         "serve": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run serve $npm_config_open;}; f",
         "start": "node server.js",
-        "heroku-postbuild": "npm run build:one bot-web-ui && npm run build:one core",
+        "heroku-postbuild": "npm run build:one bot-web-ui",
         "test": "f () { npm run test:stylelint  && npm run test:eslint-all && npm run test:jest  ;}; f",
         "test:stylelint": "stylelint \"./packages/*/src/**/*.s(a|c)ss\"",
         "test:ci": "f () { npm run test:stylelint  && npm run test:eslint-all ;}; f",
