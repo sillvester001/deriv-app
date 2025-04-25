@@ -40,28 +40,46 @@ const logDirectoryContents = (dirPath) => {
   }
 };
 
+// Check if we're in production/staging environment
+const isProduction = process.env.NODE_ENV === 'production';
+const isStaging = process.env.NODE_ENV === 'staging';
+const isDevelopment = !isProduction && !isStaging;
+
+console.log('========== SERVER STARTUP INFO ==========');
+console.log('Environment:', process.env.NODE_ENV || 'development');
+console.log('Port:', PORT);
+console.log('Current directory:', __dirname);
+
 // Check if directories exist and log info
 const coreDist = path.join(__dirname, 'packages/core/dist');
+const botSkeletonDist = path.join(__dirname, 'packages/bot-skeleton/dist');
 const botDist = path.join(__dirname, 'packages/bot-web-ui/dist');
 const botDistBot = path.join(__dirname, 'packages/bot-web-ui/dist/bot');
 const nodeModulesBotDist = path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist');
 const nodeModulesBotDistBot = path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot');
 
-console.log('Environment:', process.env.NODE_ENV || 'development');
+console.log('\n========== DIRECTORY STATUS ==========');
 console.log('Core dist exists:', directoryExists(coreDist));
+console.log('Bot Skeleton dist exists:', directoryExists(botSkeletonDist));
 console.log('Bot dist exists:', directoryExists(botDist));
 console.log('Bot dist/bot exists:', directoryExists(botDistBot));
 console.log('node_modules Bot dist exists:', directoryExists(nodeModulesBotDist));
 console.log('node_modules Bot dist/bot exists:', directoryExists(nodeModulesBotDistBot));
 
-// Log directory contents for debugging
-logDirectoryContents(__dirname);
+// Log packages directory contents
+console.log('\n========== PACKAGES DIRECTORY ==========');
 logDirectoryContents(path.join(__dirname, 'packages'));
+
+// Log bot dist contents if it exists
 if (directoryExists(botDist)) {
+  console.log('\n========== BOT DIST DIRECTORY ==========');
   logDirectoryContents(botDist);
 }
-if (directoryExists(nodeModulesBotDist)) {
-  logDirectoryContents(nodeModulesBotDist);
+
+// Log bot-skeleton dist contents if it exists
+if (directoryExists(botSkeletonDist)) {
+  console.log('\n========== BOT SKELETON DIST DIRECTORY ==========');
+  logDirectoryContents(botSkeletonDist);
 }
 
 // Set main static directory
@@ -199,11 +217,14 @@ app.get('*', (req, res) => {
 
 // Start the server
 app.listen(PORT, '0.0.0.0', () => {
+  console.log('\n========== SERVER STARTED ==========');
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   
   // Only show localhost URL in development
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  if (isDevelopment) {
     console.log(`Local URL: http://localhost:${PORT}`);
+  } else {
+    console.log(`Running in ${isProduction ? 'PRODUCTION' : 'STAGING'} mode`);
   }
 }); 
