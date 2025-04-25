@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -82,49 +83,46 @@ if (directoryExists(botSkeletonDist)) {
   logDirectoryContents(botSkeletonDist);
 }
 
-// Set main static directory
-app.use(express.static(path.join(__dirname, 'packages/core/dist')));
+// Log core dist contents if it exists
+if (directoryExists(coreDist)) {
+  console.log('\n========== CORE DIST DIRECTORY ==========');
+  logDirectoryContents(coreDist);
+}
 
-// Handle bot static files - try both possible locations
-app.use('/bot', express.static(path.join(__dirname, 'packages/bot-web-ui/dist')));
-app.use('/bot', express.static(path.join(__dirname, 'packages/bot-web-ui/dist/bot')));
-app.use('/bot', express.static(path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist')));
-app.use('/bot', express.static(path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot')));
+// Serve static files from core first
+app.use(express.static(coreDist));
 
-// For non-hashed JS files, find the corresponding hashed file
+// Handle bot static files specifically under /bot path
+const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist');
+app.use('/bot', express.static(botDistPath));
+
+// For non-hashed JS files within /bot/, find the corresponding hashed file
 app.get('/bot/js/:filename', (req, res, next) => {
   const filename = req.params.filename;
-  console.log(`Request for JS file: ${filename}`);
+  console.log(`Request for /bot/ JS file: ${filename}`);
   
-  // Try multiple possible locations
-  const jsDirs = [
-    path.join(__dirname, 'packages/bot-web-ui/dist/js'),
-    path.join(__dirname, 'packages/bot-web-ui/dist/bot/js'),
-    path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/js'),
-    path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot/js')
-  ];
+  // Look only within the bot's dist directory
+  const jsDir = path.join(botDistPath, 'bot/js');
   
-  for (const jsDir of jsDirs) {
-    if (directoryExists(jsDir)) {
-      console.log(`Checking in directory: ${jsDir}`);
-      try {
-        const files = fs.readdirSync(jsDir);
+  if (directoryExists(jsDir)) {
+    console.log(`Checking in directory: ${jsDir}`);
+    try {
+      const files = fs.readdirSync(jsDir);
+      
+      if (!filename.includes('.hash.')) {
+        const baseName = path.basename(filename, '.js');
+        const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
         
-        if (!filename.includes('.hash.')) {
-          const baseName = path.basename(filename, '.js');
-          const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
-          
-          if (hashedFile) {
-            console.log(`Found hashed file: ${hashedFile}`);
-            return res.sendFile(path.join(jsDir, hashedFile));
-          }
-        } else if (files.includes(filename)) {
-          console.log(`Found exact file: ${filename}`);
-          return res.sendFile(path.join(jsDir, filename));
+        if (hashedFile) {
+          console.log(`Found hashed file: ${hashedFile}`);
+          return res.sendFile(path.join(jsDir, hashedFile));
         }
-      } catch (err) {
-        console.error(`Error reading directory ${jsDir}:`, err);
+      } else if (files.includes(filename)) {
+        console.log(`Found exact file: ${filename}`);
+        return res.sendFile(path.join(jsDir, filename));
       }
+    } catch (err) {
+      console.error(`Error reading directory ${jsDir}:`, err);
     }
   }
   
@@ -132,40 +130,33 @@ app.get('/bot/js/:filename', (req, res, next) => {
   next();
 });
 
-// For non-hashed CSS files, find the corresponding hashed file
+// For non-hashed CSS files within /bot/, find the corresponding hashed file
 app.get('/bot/css/:filename', (req, res, next) => {
   const filename = req.params.filename;
-  console.log(`Request for CSS file: ${filename}`);
+  console.log(`Request for /bot/ CSS file: ${filename}`);
+
+  // Look only within the bot's dist directory
+  const cssDir = path.join(botDistPath, 'bot/css');
   
-  // Try multiple possible locations
-  const cssDirs = [
-    path.join(__dirname, 'packages/bot-web-ui/dist/css'),
-    path.join(__dirname, 'packages/bot-web-ui/dist/bot/css'),
-    path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/css'),
-    path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot/css')
-  ];
-  
-  for (const cssDir of cssDirs) {
-    if (directoryExists(cssDir)) {
-      console.log(`Checking in directory: ${cssDir}`);
-      try {
-        const files = fs.readdirSync(cssDir);
+  if (directoryExists(cssDir)) {
+    console.log(`Checking in directory: ${cssDir}`);
+    try {
+      const files = fs.readdirSync(cssDir);
+      
+      if (!filename.includes('.hash.')) {
+        const baseName = path.basename(filename, '.css');
+        const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
         
-        if (!filename.includes('.hash.')) {
-          const baseName = path.basename(filename, '.css');
-          const hashedFile = files.find(file => file.startsWith(`${baseName}.`) && file.includes('.hash.'));
-          
-          if (hashedFile) {
-            console.log(`Found hashed file: ${hashedFile}`);
-            return res.sendFile(path.join(cssDir, hashedFile));
-          }
-        } else if (files.includes(filename)) {
-          console.log(`Found exact file: ${filename}`);
-          return res.sendFile(path.join(cssDir, filename));
+        if (hashedFile) {
+          console.log(`Found hashed file: ${hashedFile}`);
+          return res.sendFile(path.join(cssDir, hashedFile));
         }
-      } catch (err) {
-        console.error(`Error reading directory ${cssDir}:`, err);
+      } else if (files.includes(filename)) {
+        console.log(`Found exact file: ${filename}`);
+        return res.sendFile(path.join(cssDir, filename));
       }
+    } catch (err) {
+      console.error(`Error reading directory ${cssDir}:`, err);
     }
   }
   
@@ -173,44 +164,32 @@ app.get('/bot/css/:filename', (req, res, next) => {
   next();
 });
 
-// Redirect root to bot
-app.get('/', (req, res) => {
-  res.redirect('/bot');
-});
-
 // Catch-all route for SPA
 app.get('*', (req, res) => {
   const url = req.url;
   console.log(`Catch-all route handling: ${url}`);
-  
-  // For bot routes
-  if (url.startsWith('/bot')) {
-    // Try multiple possible index.html locations
-    const botIndexPaths = [
-      path.join(__dirname, 'packages/bot-web-ui/dist/index.html'),
-      path.join(__dirname, 'packages/bot-web-ui/dist/bot/index.html'),
-      path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/index.html'),
-      path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot/index.html')
-    ];
-    
-    for (const botIndexPath of botIndexPaths) {
-      console.log(`Checking for index.html at: ${botIndexPath}`);
-      if (fileExists(botIndexPath)) {
-        console.log(`Found index.html at: ${botIndexPath}`);
-        return res.sendFile(botIndexPath);
-      }
+
+  const botIndexPath = path.join(botDistPath, 'bot/index.html');
+  const coreIndexPath = path.join(coreDist, 'index.html');
+
+  // Serve bot index.html for /bot routes OR the root path /
+  if (url === '/' || url.startsWith('/bot')) {
+    console.log(`Checking for bot index.html at: ${botIndexPath}`);
+    if (fileExists(botIndexPath)) {
+      console.log(`Found bot index.html at: ${botIndexPath}`);
+      return res.sendFile(botIndexPath);
     }
-    
-    console.log('No bot index.html found');
+    console.log('No bot index.html found, falling back...');
+    // Fall through to core index if bot index is missing but URL was / or /bot
   }
-  
-  // For other routes, serve the main index.html
-  const indexPath = path.join(__dirname, 'packages/core/dist/index.html');
-  if (fileExists(indexPath)) {
-    console.log(`Serving core index.html from: ${indexPath}`);
-    return res.sendFile(indexPath);
+
+  // For all other routes, or if bot index wasn't found, serve the main core index.html
+  console.log(`Checking for core index.html at: ${coreIndexPath}`);
+  if (fileExists(coreIndexPath)) {
+    console.log(`Serving core index.html from: ${coreIndexPath}`);
+    return res.sendFile(coreIndexPath);
   }
-  
+
   console.log('No index.html found at all, returning 404');
   res.status(404).send('Not found');
 });
