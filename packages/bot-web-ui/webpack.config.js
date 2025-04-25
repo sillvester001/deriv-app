@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const IS_RELEASE =
     process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'test';
@@ -141,6 +142,11 @@ module.exports = function (env) {
                 ],
             }),
             new SpriteLoaderPlugin(),
+            new HtmlWebpackPlugin({
+                filename: 'bot/index.html',
+                template: path.resolve(__dirname, 'src/index.html'),
+                inject: 'body',
+            }),
         ],
         externals: [
             {
