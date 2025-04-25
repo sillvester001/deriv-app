@@ -107,9 +107,10 @@ if (directoryExists(botDistBotPath)) {
 // Serve static files from core first
 app.use(express.static(coreDist));
 
-// Handle bot static files specifically under /bot path
-// const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist'); // Definition moved earlier
-app.use('/bot', express.static(botDistPath));
+// Handle bot static files specifically under /bot path, serving from the dist/bot subdir
+// const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist'); // Defined earlier
+// const botDistBotPath = path.join(botDistPath, 'bot'); // Defined earlier
+app.use('/bot', express.static(botDistBotPath)); // Serve from dist/bot for /bot requests
 
 // Catch-all route for SPA
 app.get('*', (req, res) => {
