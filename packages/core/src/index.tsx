@@ -11,6 +11,9 @@ import { checkAndSetEndpointFromUrl } from '@deriv/shared';
 import AppNotificationMessages from './App/Containers/app-notification-messages.jsx';
 import { AnalyticsInitializer } from 'Utils/Analytics';
 
+// Set the desired App ID for this deployment
+localStorage.setItem('config.app_id', '70686');
+
 AnalyticsInitializer();
 if (
     !!window?.localStorage.getItem?.('debug_service_worker') || // To enable local service worker related development
