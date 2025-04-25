@@ -1,1 +1,1 @@
-web: export HEROKU=true && npm run serve core --open=bot 
+web: node server.js 
