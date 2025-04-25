@@ -58,6 +58,8 @@ const botDist = path.join(__dirname, 'packages/bot-web-ui/dist');
 const botDistBot = path.join(__dirname, 'packages/bot-web-ui/dist/bot');
 const nodeModulesBotDist = path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist');
 const nodeModulesBotDistBot = path.join(__dirname, 'node_modules/@deriv/bot-web-ui/dist/bot');
+// Define botDistPath early
+const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist');
 
 console.log('\n========== DIRECTORY STATUS ==========');
 console.log('Core dist exists:', directoryExists(coreDist));
@@ -89,7 +91,7 @@ if (directoryExists(coreDist)) {
   logDirectoryContents(coreDist);
 }
 
-// Log bot dist/bot contents if it exists
+// Log bot dist/bot contents if it exists (now uses the pre-defined botDistPath)
 const botDistBotPath = path.join(botDistPath, 'bot');
 if (directoryExists(botDistBotPath)) {
   console.log('\n========== BOT DIST/BOT DIRECTORY ==========');
@@ -106,7 +108,7 @@ if (directoryExists(botDistBotPath)) {
 app.use(express.static(coreDist));
 
 // Handle bot static files specifically under /bot path
-const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist');
+// const botDistPath = path.join(__dirname, 'packages/bot-web-ui/dist'); // Definition moved earlier
 app.use('/bot', express.static(botDistPath));
 
 // Catch-all route for SPA
