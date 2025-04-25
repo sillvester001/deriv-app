@@ -26,6 +26,15 @@ window.addEventListener('load', () => {
             Reload Page
         </button>
         <div id="debug-log" style="margin-top: 30px; text-align: left; font-family: monospace; font-size: 12px; background: #fff; padding: 10px; border: 1px solid #ddd; width: 80%; max-width: 800px; height: 200px; overflow-y: auto;"></div>
+
+        <div style="margin-top: 30px; width: 80%; max-width: 800px;">
+            <button id="force-init-button" style="padding: 10px 20px; background: #0077cc; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+                Force Initialize Bot
+            </button>
+            <button id="skip-to-app-button" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Skip to App
+            </button>
+        </div>
     `;
     document.body.appendChild(fallbackUI);
     
@@ -43,6 +52,56 @@ window.addEventListener('load', () => {
             debugLog.scrollTop = debugLog.scrollHeight;
         }
     };
+    
+    // Global configuration for the Deriv Bot
+    window.store_root_store = window.store_root_store || {};
+    window.BinaryBotOptions = {
+        apiUrl: 'wss://ws.binaryws.com/websockets/v3',
+        language: 'en',
+        debug: true,
+    };
+    
+    // Add force init button handler
+    document.getElementById('force-init-button').addEventListener('click', () => {
+        updateStatus('Attempting forced initialization...');
+        try {
+            if (window.BinaryBot && typeof window.BinaryBot.init === 'function') {
+                window.BinaryBot.init();
+                updateStatus('Forced initialization called successfully');
+            } else if (window.Bot && typeof window.Bot.init === 'function') {
+                window.Bot.init();
+                updateStatus('Forced initialization called successfully (Bot.init)');
+            } else if (window.WebtraderBotApp && typeof window.WebtraderBotApp.init === 'function') {
+                window.WebtraderBotApp.init();
+                updateStatus('Forced initialization called successfully (WebtraderBotApp)');
+            } else if (window.DBotStore) {
+                updateStatus('Found DBotStore, trying to render');
+                try {
+                    // Try to manually trigger React rendering
+                    const botContainer = document.getElementById('deriv-bot');
+                    if (botContainer && window.React && window.ReactDOM) {
+                        updateStatus('Attempting to render with React...');
+                        if (window.botApp) {
+                            window.ReactDOM.render(window.botApp, botContainer);
+                            updateStatus('Manual rendering triggered');
+                        }
+                    }
+                } catch (err) {
+                    updateStatus(`Error during manual render: ${err.message}`);
+                }
+            } else {
+                updateStatus('Could not find Bot initialization function');
+            }
+        } catch (err) {
+            updateStatus(`Error during forced init: ${err.message}`);
+        }
+    });
+    
+    // Add skip to app button handler
+    document.getElementById('skip-to-app-button').addEventListener('click', () => {
+        document.getElementById('fallback-container').style.display = 'none';
+        updateStatus('Skipped to app view');
+    });
     
     try {
         // Only redirect if not already on the bot path
@@ -64,7 +123,12 @@ window.addEventListener('load', () => {
                             updateStatus('Creating bot container in app root');
                             appRoot.innerHTML = '<div id="deriv-bot" style="height: 100vh;"></div>';
                         } else {
-                            updateStatus('ERROR: No app root element found!');
+                            updateStatus('ERROR: No app root element found! Creating one...');
+                            const newAppRoot = document.createElement('div');
+                            newAppRoot.id = 'app';
+                            newAppRoot.innerHTML = '<div id="deriv-bot" style="height: 100vh;"></div>';
+                            document.body.appendChild(newAppRoot);
+                            updateStatus('Created app root element manually');
                         }
                         
                         // Look for the main bot script - it might have a different hash in the filename
@@ -85,14 +149,51 @@ window.addEventListener('load', () => {
                                 mainScript.onload = () => {
                                     updateStatus('Main script loaded successfully. App should initialize shortly...');
                                     
-                                    // Check if bot app has rendered after a delay
+                                    // Wait a bit longer for initialization
                                     setTimeout(() => {
-                                        if (document.getElementById('deriv-bot').childElementCount > 0) {
-                                            updateStatus('Bot app has rendered!');
-                                            // Can optionally hide the fallback UI
-                                            // document.getElementById('fallback-container').style.display = 'none';
-                                        } else {
-                                            updateStatus('WARNING: Bot app hasn\'t rendered content yet.');
+                                        try {
+                                            const botElement = document.getElementById('deriv-bot');
+                                            if (botElement && botElement.children.length > 0) {
+                                                updateStatus('Bot app has rendered!');
+                                                // Optionally hide the fallback UI if content rendered successfully
+                                                // document.getElementById('fallback-container').style.display = 'none';
+                                            } else {
+                                                updateStatus('WARNING: Bot app hasn\'t rendered content yet.');
+                                                
+                                                // Try to initialize manually after a delay
+                                                setTimeout(() => {
+                                                    updateStatus('Attempting manual initialization...');
+                                                    
+                                                    // Inspect available global objects
+                                                    const globals = [];
+                                                    for (const key in window) {
+                                                        if (key.includes('Bot') || key.includes('Deriv') || key.includes('binary') || key.includes('Binary')) {
+                                                            globals.push(key);
+                                                        }
+                                                    }
+                                                    
+                                                    updateStatus(`Found potentially related globals: ${globals.join(', ')}`);
+                                                    
+                                                    // Try to call initialization functions if they exist
+                                                    if (window.BinaryBot && typeof window.BinaryBot.init === 'function') {
+                                                        window.BinaryBot.init();
+                                                        updateStatus('Called BinaryBot.init()');
+                                                    }
+                                                    
+                                                    if (window.Bot && typeof window.Bot.init === 'function') {
+                                                        window.Bot.init();
+                                                        updateStatus('Called Bot.init()');
+                                                    }
+                                                    
+                                                    if (window.DBotStore) {
+                                                        updateStatus('Found DBotStore');
+                                                    }
+                                                    
+                                                    updateStatus('Manual initialization complete. Check if content appears.');
+                                                }, 3000);
+                                            }
+                                        } catch (err) {
+                                            updateStatus(`Error checking render status: ${err.message}`);
                                         }
                                     }, 5000);
                                 };
@@ -140,5 +241,10 @@ window.addEventListener('load', () => {
     // Add listener to global errors
     window.addEventListener('error', (event) => {
         updateStatus(`GLOBAL ERROR: ${event.message} at ${event.filename}:${event.lineno}`);
+    });
+
+    // Add listener for unhandled rejections
+    window.addEventListener('unhandledrejection', (event) => {
+        updateStatus(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
     });
 }); 
