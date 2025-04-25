@@ -1,9 +1,20 @@
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
 const path = require('path');
 const stylelintFormatter = require('stylelint-formatter-pretty');
 const { transformContentUrlBase } = require('./helpers');
-const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const gitRevisionPlugin = new GitRevisionPlugin();
+const gitRevisionPlugin = (() => {
+    try {
+        return new GitRevisionPlugin();
+    } catch (e) {
+        // Return mock object for environments where git is not available (e.g. Heroku)
+        return {
+            version: () => 'unknown',
+        };
+    }
+})();
 
 const copyConfig = base => {
     const patterns = [
@@ -235,13 +246,21 @@ const generateSWConfig = () => ({
 });
 
 const htmlOutputConfig = is_release => ({
-    template: 'index.html',
+    title: 'Deriv Platform',
     filename: 'index.html',
+    template: 'index.html',
+    hash: true,
     meta: is_release
         ? {
               versionMetaTAG: {
                   name: 'version',
-                  content: gitRevisionPlugin.version(),
+                  content: (() => {
+                      try {
+                          return gitRevisionPlugin.version();
+                      } catch (e) {
+                          return 'unknown';
+                      }
+                  })(),
               },
           }
         : {},
