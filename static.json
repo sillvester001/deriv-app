@@ -5,6 +5,9 @@
     "/": {
       "url": "/bot",
       "status": 302
+    },
+    "/**": {
+      "dest": "/index.html"
     }
   }
 } 

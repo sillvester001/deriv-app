@@ -92,7 +92,7 @@
         "prettify": "./node_modules/.bin/prettier --config ./.prettierrc --write \"./packages/*/{stories,script,src,build}/**/*.{js,jsx,ts,tsx,scss}\"",
         "publish_package": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run publish_package $2 ;}; f",
         "serve": "f () { npm exec --workspace=@deriv/${1:-'*'} -- npm run serve $npm_config_open;}; f",
-        "start": "cd packages/core && npm run start",
+        "start": "npm run build:one bot-web-ui && npm run serve core --open=bot",
         "test": "f () { npm run test:stylelint  && npm run test:eslint-all && npm run test:jest  ;}; f",
         "test:stylelint": "stylelint \"./packages/*/src/**/*.s(a|c)ss\"",
         "test:ci": "f () { npm run test:stylelint  && npm run test:eslint-all ;}; f",
@@ -102,7 +102,8 @@
         "stylelint:fix": "stylelint \"./packages/*/src/**/*.s(a|c)ss\" --fix",
         "translate": "f () { npm exec --workspace=@deriv/translations -- npm run translate ;}; f",
         "stylelint-check": "stylelint-config-prettier-check",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "heroku-postbuild": "npm run build:one bot-web-ui && npm run build:one core"
     },
     "dependencies": {
         "@babel/preset-typescript": "^7.24.7",

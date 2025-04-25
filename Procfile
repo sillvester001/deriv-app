@@ -1,1 +1,1 @@
-web: npm run start 
+web: npm run build:one bot-web-ui && npm run serve core --open=bot 
