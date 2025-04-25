@@ -103,7 +103,7 @@
         "translate": "f () { npm exec --workspace=@deriv/translations -- npm run translate ;}; f",
         "stylelint-check": "stylelint-config-prettier-check",
         "prepare": "husky install",
-        "heroku-postbuild": "npm run build:one bot-web-ui && npm run build:one core"
+        "heroku-postbuild": "npm run build:one bot-web-ui && HEROKU=true npm run build:one core"
     },
     "dependencies": {
         "@babel/preset-typescript": "^7.24.7",

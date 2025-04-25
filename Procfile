@@ -1,1 +1,1 @@
-web: npm run build:one bot-web-ui && npm run serve core --open=bot 
+web: export HEROKU=true && npm run serve core --open=bot 

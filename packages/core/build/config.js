@@ -1,8 +1,14 @@
 const path = require('path');
 const stylelintFormatter = require('stylelint-formatter-pretty');
 const { transformContentUrlBase } = require('./helpers');
-const { GitRevisionPlugin } = require('git-revision-webpack-plugin');
 
+// Use mock Git Revision Plugin for Heroku
+const isHerokuEnv = process.env.HEROKU === 'true';
+const GitRevisionPluginModule = isHerokuEnv 
+    ? require('./heroku-git-revision') 
+    : require('git-revision-webpack-plugin');
+
+const { GitRevisionPlugin } = GitRevisionPluginModule;
 const gitRevisionPlugin = new GitRevisionPlugin();
 
 const copyConfig = base => {
