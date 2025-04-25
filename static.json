@@ -1,0 +1,10 @@
+{
+  "root": "packages/core/dist",
+  "clean_urls": true,
+  "routes": {
+    "/": {
+      "url": "/bot",
+      "status": 302
+    }
+  }
+} 
