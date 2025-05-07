@@ -31,7 +31,7 @@ const Page404 = () => {
                         size={buttonSize}
                     >
                         <Text color='white' size={buttonTextSize} weight='bold'>
-                            <Localize i18n_default_text="Return to Trader's Hub" />
+                            <Localize i18n_default_text="Return to Mathews Trader" />
                         </Text>
                     </Button>
                 }

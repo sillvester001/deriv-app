@@ -16,7 +16,7 @@
             "icon": "IcRebrandingDerivTrader"
         },
         "dbot": {
-            "name": "Deriv Bot",
+            "name": "Trader Mathews Bot",
             "icon": "IcRebrandingDerivBot"
         },
         "mt5": {
@@ -47,7 +47,7 @@
             "availability": "All"
         },
         "dbot": {
-            "name": "Deriv Bot",
+            "name": "Trader Mathews Bot",
             "icon": "DBot",
             "availability": "Non-EU"
         },

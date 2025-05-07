@@ -26,7 +26,7 @@ describe('Onboarding Tour Mobile', () => {
         render(<OnboardingTourMobile />, {
             wrapper,
         });
-        expect(screen.getByText('Get started on Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Get started on Trader Mathews Bot')).toBeInTheDocument();
     });
 
     it('should render OnboardingTourMobile steps when clicking start', () => {

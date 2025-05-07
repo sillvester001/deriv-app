@@ -50,7 +50,7 @@ export const getOptionsAndMultipliersContent = (
         isExternal: true,
         key: 'bot',
         redirect: appendSearchParamsToUrl(getUrlBot()),
-        title: 'Deriv Bot',
+        title: 'Trader Mathews Bot',
     },
     {
         availability: 'Non-EU',

@@ -37,7 +37,7 @@ const AccountTransferNoAccount = observer(() => {
                         history.push(routes.traders_hub);
                     }}
                 >
-                    <Localize i18n_default_text="Back to Trader's Hub" />
+                    <Localize i18n_default_text="Back to Mathews Trader" />
                 </Button>
             )}
         </div>

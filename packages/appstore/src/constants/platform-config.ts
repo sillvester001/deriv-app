@@ -92,7 +92,7 @@ export const getMFAppstorePlatforms = (): MfPlatformConfig[] => [
 // The platform names were taken from packages/shared/brand.config.json
 export const DERIV_PLATFORM_NAMES = {
     TRADER: 'Deriv Trader',
-    DBOT: 'Deriv Bot',
+    DBOT: 'Trader Mathews Bot',
     SMARTTRADER: 'SmartTrader',
     GO: 'Deriv GO',
 } as const;

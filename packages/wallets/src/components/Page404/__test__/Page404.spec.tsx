@@ -31,7 +31,7 @@ describe('Page404', () => {
         expect(screen.getByRole('img', { name: '404' })).toHaveAttribute('src', '/public/images/common/404.png');
         expect(screen.getByRole('img', { name: '404' })).toHaveAttribute('width', '607px');
         expect(screen.getByRole('img', { name: '404' })).toHaveAttribute('height', '366px');
-        expect(screen.getByRole('button', { name: "Return to Trader's Hub" })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: "Return to Mathews Trader" })).toBeInTheDocument();
     });
 
     it('renders error 404 screen content for mobile', () => {
@@ -45,7 +45,7 @@ describe('Page404', () => {
     it('navigates to home page when button is clicked', async () => {
         render(<Page404 />);
 
-        const button = screen.getByRole('button', { name: "Return to Trader's Hub" });
+        const button = screen.getByRole('button', { name: "Return to Mathews Trader" });
         await userEvent.click(button);
 
         expect(mockHistoryPush).toHaveBeenCalledWith('/');

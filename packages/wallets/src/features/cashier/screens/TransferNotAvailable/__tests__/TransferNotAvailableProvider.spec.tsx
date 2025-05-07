@@ -50,9 +50,9 @@ describe('TransferNotAvailableProvider', () => {
             screen.getByText('No trading accounts or other wallets are available to receive funds')
         ).toBeInTheDocument();
         expect(
-            screen.getByText("Add a trading account or Wallet in Trader's hub to receive funds from this Wallet.")
+            screen.getByText("Add a trading account or Wallet in Mathews Trader to receive funds from this Wallet.")
         ).toBeInTheDocument();
-        const button = screen.getByText("Back to Trader's hub");
+        const button = screen.getByText("Back to Mathews Trader");
         await userEvent.click(button);
         expect(mockHistory.push).toHaveBeenCalledWith('/');
     });
@@ -79,7 +79,7 @@ describe('TransferNotAvailableProvider', () => {
         expect(screen.getByText('No trading accounts are available to receive funds')).toBeInTheDocument();
         expect(
             screen.getByText(
-                "Add a demo trading account in Trader's hub to receive funds from this Wallet to start trading."
+                "Add a demo trading account in Mathews Trader to receive funds from this Wallet to start trading."
             )
         ).toBeInTheDocument();
     });

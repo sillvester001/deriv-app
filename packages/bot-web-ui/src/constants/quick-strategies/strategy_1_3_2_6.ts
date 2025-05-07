@@ -5,7 +5,7 @@ import { TDescriptionItem } from '../../pages/bot-builder/quick-strategy/types';
 export const STRATEGY_1_3_2_6: TDescriptionItem[] = [
     {
         type: 'subtitle',
-        content: [localize('Exploring the 1-3-2-6 strategy in Deriv Bot')],
+        content: [localize('Exploring the 1-3-2-6 strategy in Trader Mathews Bot')],
         expanded: true,
         no_collapsible: false,
     },
@@ -16,7 +16,7 @@ export const STRATEGY_1_3_2_6: TDescriptionItem[] = [
                 'The 1-3-2-6 strategy aims to maximise potential profits with four consecutive successful trades. One unit is equal to the amount of the initial stake. The stake will adjust from 1 unit to 3 units after the first successful trade, then to 2 units after your second successful trade, and to 6 units after the third successful trade. The stake for the next trade will reset to the initial stake if there is a losing trade or a completion of the trade cycle.'
             ),
             localize(
-                "This article explores the strategy integrated into Deriv Bot, a versatile trading bot designed to trade assets such as Forex, Commodities, and Derived Indices. We will delve into the strategy's core parameters, its application, and provide essential takeaways for traders looking to use the bot effectively."
+                "This article explores the strategy integrated into Trader Mathews Bot, a versatile trading bot designed to trade assets such as Forex, Commodities, and Derived Indices. We will delve into the strategy's core parameters, its application, and provide essential takeaways for traders looking to use the bot effectively."
             ),
         ],
     },
@@ -26,7 +26,7 @@ export const STRATEGY_1_3_2_6: TDescriptionItem[] = [
     },
     {
         type: 'text',
-        content: [localize('These are the trade parameters used in Deriv Bot with 1-3-2-6 strategy.')],
+        content: [localize('These are the trade parameters used in Trader Mathews Bot with 1-3-2-6 strategy.')],
     },
     {
         type: 'text',
@@ -98,7 +98,7 @@ export const STRATEGY_1_3_2_6: TDescriptionItem[] = [
         type: 'text',
         content: [
             localize(
-                'With Deriv Bot, traders can set the profit and loss thresholds to secure potential profits and limit potential losses. This means that the trading bot will automatically stop when either the profit or loss threshold is reached. This is a form of risk management that can potentially boost successful trades whilst limiting the impact of loss. For example, if a trader sets the profit threshold at 100 USD and the strategy exceeds 100 USD of profit from all trades, then the bot will stop running.'
+                'With Trader Mathews Bot, traders can set the profit and loss thresholds to secure potential profits and limit potential losses. This means that the trading bot will automatically stop when either the profit or loss threshold is reached. This is a form of risk management that can potentially boost successful trades whilst limiting the impact of loss. For example, if a trader sets the profit threshold at 100 USD and the strategy exceeds 100 USD of profit from all trades, then the bot will stop running.'
             ),
         ],
     },

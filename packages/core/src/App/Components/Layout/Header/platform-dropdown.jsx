@@ -74,7 +74,7 @@ const PlatformDropdown = ({ app_routing_history, closeDrawer, platform_config, s
                     }}
                 >
                     <Text size='xs' weight='bold' align='center' className='platform-dropdown__cta--link'>
-                        <Localize i18n_default_text="Looking for CFDs? Go to Trader's Hub" />
+                        <Localize i18n_default_text="Looking for CFDs? Go to Mathews Trader" />
                     </Text>
                 </BinaryLink>
             </div>

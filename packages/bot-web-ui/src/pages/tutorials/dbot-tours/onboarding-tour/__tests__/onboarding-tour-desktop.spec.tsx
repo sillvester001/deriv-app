@@ -33,7 +33,7 @@ describe('Onboarding Tour Desktop', () => {
             wrapper,
         });
 
-        expect(screen.getByText('Get started on Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Get started on Trader Mathews Bot')).toBeInTheDocument();
     });
 
     it('should render Onboarding tour when no onboarding token and active tab is 0', () => {
@@ -53,7 +53,7 @@ describe('Onboarding Tour Desktop', () => {
         });
 
         mock_DBot_store.dashboard.setActiveTour('onboarding');
-        expect(screen.getByText('Get started on Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Get started on Trader Mathews Bot')).toBeInTheDocument();
     });
 
     it('should not render Onboarding tour when token is set and active tab is not 0', () => {
@@ -64,6 +64,6 @@ describe('Onboarding Tour Desktop', () => {
             wrapper,
         });
 
-        expect(screen.queryByText('Get started on Deriv Bot')).not.toBeInTheDocument();
+        expect(screen.queryByText('Get started on Trader Mathews Bot')).not.toBeInTheDocument();
     });
 });

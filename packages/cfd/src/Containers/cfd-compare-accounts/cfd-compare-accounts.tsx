@@ -82,7 +82,7 @@ const CompareCFDs = observer(() => {
             >
                 <Icon icon='IcArrowLeftBold' />
                 <Text size='xs' weight='bold' color='prominent'>
-                    <Localize i18n_default_text="Trader's hub" />
+                    <Localize i18n_default_text="Mathews Trader" />
                 </Text>
             </div>
             <h1 className='compare-cfd-header-title'>

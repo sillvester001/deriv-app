@@ -360,7 +360,7 @@ const ToggleMenuDrawer = observer(({ platform_config }) => {
                                     <MenuLink
                                         link_to={routes.traders_hub}
                                         icon={TradersHubIcon}
-                                        text={localize("Trader's Hub")}
+                                        text={localize("Mathews Trader")}
                                         onClickLink={toggleDrawer}
                                         is_active={route === routes.traders_hub}
                                     />

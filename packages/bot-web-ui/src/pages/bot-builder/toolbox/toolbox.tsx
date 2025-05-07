@@ -54,7 +54,7 @@ const Toolbox = observer(() => {
         return (
             <div className='db-toolbox' data-testid='dashboard__toolbox'>
                 <ToolbarButton
-                    popover_message={localize('Click here to start building your Deriv Bot.')}
+                    popover_message={localize('Click here to start building your Trader Mathews Bot.')}
                     button_id='db-toolbar__get-started-button'
                     button_classname='toolbar__btn toolbar__btn--icon toolbar__btn--start'
                     buttonOnClick={handleQuickStrategyOpen}

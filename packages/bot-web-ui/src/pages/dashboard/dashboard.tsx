@@ -56,7 +56,7 @@ const DashboardComponent = observer(({ handleTabChange }: TMobileIconGuide) => {
                                 className={classNames('subtitle', { 'subtitle__has-list': has_dashboard_strategies })}
                             >
                                 {localize(
-                                    'Import a bot from your computer or Google Drive, build it from scratch, or start with a quick strategy.'
+                                    'Deriv offers complex derivatives such as options and contracts for differences (“CFDs”). These products may not be suitable for all clients and trading them involves risk to you. Please ensure you understand the following risks before trading Deriv products: a) you may lose some or all of the money you invest in the trade, b) if your trade involves currency conversion, exchange rates will affect your profits and losses. You should never trade with borrowed money or money that you cannot afford to lose., build it from scratch, or start with a quick strategy.'
                                 )}
                             </Text>
                         </div>

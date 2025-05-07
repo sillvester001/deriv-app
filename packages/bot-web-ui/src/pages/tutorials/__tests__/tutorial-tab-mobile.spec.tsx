@@ -16,7 +16,7 @@ const userGuideContent = [
         id: 1,
         type: 'Tour',
         subtype: 'OnBoard',
-        content: 'Get started on Deriv Bot',
+        content: 'Get started on Trader Mathews Bot',
         src: 'dbot-onboard-tour.png',
     },
 ];
@@ -25,7 +25,7 @@ const guideContent = [
     {
         id: 1,
         type: 'DBotVideo',
-        content: 'An introduction to Deriv Bot',
+        content: 'An introduction to Trader Mathews Bot',
         url: 'https://www.youtube.com/embed/lthEgaIY1uw',
         src: 'intro_to_deriv_bot.png',
     },
@@ -33,11 +33,11 @@ const guideContent = [
 
 const faqContent = [
     {
-        title: 'What is Deriv Bot?',
+        title: 'What is Trader Mathews Bot?',
         description: [
             {
                 type: 'text',
-                content: 'Deriv Bot is a web-based strategy builder for trading digital options',
+                content: 'Trader Mathews Bot is a web-based strategy builder for trading digital options',
             },
         ],
     },
@@ -49,7 +49,7 @@ const qsContent = [
         description: [
             {
                 type: 'text',
-                content: 'Exploring the Martingale strategy in Deriv Bot',
+                content: 'Exploring the Martingale strategy in Trader Mathews Bot',
             },
         ],
     },

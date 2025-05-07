@@ -70,7 +70,7 @@ describe('<CompareCFDs />', () => {
 
         render(<CompareCFDs />, { wrapper });
 
-        expect(screen.getByText(/Trader's hub/i)).toBeInTheDocument();
+        expect(screen.getByText(/Mathews Trader/i)).toBeInTheDocument();
         expect(screen.getByText(/Compare CFDs accounts/i)).toBeInTheDocument();
     });
 
@@ -93,11 +93,11 @@ describe('<CompareCFDs />', () => {
 
         render(<CompareCFDs />, { wrapper });
 
-        expect(screen.getByText(/Trader's hub/i)).toBeInTheDocument();
+        expect(screen.getByText(/Mathews Trader/i)).toBeInTheDocument();
         expect(screen.getByText(/Compare CFDs demo accounts/i)).toBeInTheDocument();
     });
 
-    it("navigates to the trader's hub when the navigation element is clicked", () => {
+    it("navigates to the Mathews Trader when the navigation element is clicked", () => {
         const historyMock = {
             push: jest.fn(),
         };
@@ -112,7 +112,7 @@ describe('<CompareCFDs />', () => {
             { wrapper }
         );
 
-        const navigationElement = screen.getByText(/Trader's hub/i);
+        const navigationElement = screen.getByText(/Mathews Trader/i);
         navigationElement.click();
 
         expect(historyMock.push).toHaveBeenCalledWith(routes.traders_hub);

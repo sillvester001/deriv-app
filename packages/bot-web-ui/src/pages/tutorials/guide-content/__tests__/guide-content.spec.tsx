@@ -14,7 +14,7 @@ const mock_guide_tab_content = [
         id: 1,
         type: 'Tour',
         subtype: 'OnBoard',
-        content: 'Get started on Deriv Bot',
+        content: 'Get started on Trader Mathews Bot',
         src: 'dbot-onboard-tour.png',
         search_id: 'ugc-0',
     },
@@ -32,7 +32,7 @@ const mock_video_tab_content = [
     {
         id: 1,
         type: 'DBotVideo',
-        content: 'An introduction to Deriv Bot',
+        content: 'An introduction to Trader Mathews Bot',
         url: 'https://www.youtube.com/embed/lthEgaIY1uw',
         src: 'intro_to_deriv_bot.png',
     },
@@ -67,7 +67,7 @@ describe('<GuideContent />', () => {
         render(<GuideContent {...mocked_props} />, { wrapper });
 
         expect(screen.getByText('Step-by-step guides')).toBeInTheDocument();
-        expect(screen.getByText('Videos on Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Videos on Trader Mathews Bot')).toBeInTheDocument();
     });
 
     it('should render with active tour as empty string in desktop.', async () => {
@@ -183,7 +183,7 @@ describe('<GuideContent />', () => {
         });
 
         await waitFor(() => {
-            expect(screen.getByText(/Videos on Deriv Bot/i));
+            expect(screen.getByText(/Videos on Trader Mathews Bot/i));
         });
     });
 });

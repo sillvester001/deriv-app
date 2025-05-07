@@ -23,7 +23,7 @@ export const UploadComplete = ({
         return (
             <IconMessageContent message={message} text={description} icon={<Icon icon='IcPoiVerified' size={128} />}>
                 {!is_from_external && (
-                    <RouteButton button_label={localize("Return to Trader's Hub")} route={routes.traders_hub} />
+                    <RouteButton button_label={localize("Return to Mathews Trader")} route={routes.traders_hub} />
                 )}
             </IconMessageContent>
         );

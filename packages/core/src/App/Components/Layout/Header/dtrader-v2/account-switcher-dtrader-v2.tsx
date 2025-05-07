@@ -228,7 +228,7 @@ const AccountSwitcherDTraderV2 = observer(({ history }: TAccountSwitcherDTraderV
                     {is_mt5_allowed && (
                         <BinaryLink onClick={handleRedirect} className='acc-switcher-dtrader__traders-hub'>
                             <Text size='sm'>
-                                <Localize i18n_default_text="Looking for CFD accounts? Go to Trader's Hub" />
+                                <Localize i18n_default_text="Looking for CFD accounts? Go to Mathews Trader" />
                             </Text>
                             <LabelPairedChevronRightSmRegularIcon />
                         </BinaryLink>

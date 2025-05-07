@@ -44,7 +44,7 @@ describe('<DerivPassword />', () => {
         expect(screen.getAllByText(/deriv password/i)).toHaveLength(2);
         expect(
             screen.getByText(
-                /use your to log in to deriv\.com, deriv go, deriv trader, smarttrader, deriv bot and deriv ctrader\./i
+                /use your to log in to deriv\.com, deriv go, deriv trader, smarttrader, Trader Mathews Bot and deriv ctrader\./i
             )
         ).toBeInTheDocument();
         expect(screen.queryByText(/BrandDerivLogoCoralIcon/i)).toBeInTheDocument();

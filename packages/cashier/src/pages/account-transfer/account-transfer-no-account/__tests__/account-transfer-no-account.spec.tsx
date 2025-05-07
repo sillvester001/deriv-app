@@ -38,7 +38,7 @@ describe('<AccountTransferNoAccount />', () => {
         renderAccountTransferNoAccountWithRouter();
 
         expect(screen.getByText('Transferring funds will require you to create a second account.')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: "Back to Trader's Hub" })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: "Back to Mathews Trader" })).toBeInTheDocument();
     });
 
     it('should show "Transferring funds will require you to create a second account." message and "Back to traders hub" button when is_dxtrade_allowed=true', () => {
@@ -47,13 +47,13 @@ describe('<AccountTransferNoAccount />', () => {
         renderAccountTransferNoAccountWithRouter();
 
         expect(screen.getByText('Transferring funds will require you to create a second account.')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: "Back to Trader's Hub" })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: "Back to Mathews Trader" })).toBeInTheDocument();
     });
 
     it('should navigate to traders hub, when the "Back to traders hub" button was clicked', () => {
         renderAccountTransferNoAccountWithRouter();
 
-        const back_to_traders_hub_btn = screen.getByRole('button', { name: "Back to Trader's Hub" });
+        const back_to_traders_hub_btn = screen.getByRole('button', { name: "Back to Mathews Trader" });
         fireEvent.click(back_to_traders_hub_btn);
 
         expect(history.location.pathname).toBe(routes.traders_hub);
@@ -64,7 +64,7 @@ describe('<AccountTransferNoAccount />', () => {
 
         renderAccountTransferNoAccountWithRouter();
 
-        const back_to_traders_hub_btn = screen.getByRole('button', { name: "Back to Trader's Hub" });
+        const back_to_traders_hub_btn = screen.getByRole('button', { name: "Back to Mathews Trader" });
         fireEvent.click(back_to_traders_hub_btn);
 
         expect(history.location.pathname).toBe(routes.traders_hub);
@@ -75,6 +75,6 @@ describe('<AccountTransferNoAccount />', () => {
 
         renderAccountTransferNoAccountWithRouter();
 
-        expect(screen.queryByRole('button', { name: "Back to Trader's Hub" })).not.toBeInTheDocument();
+        expect(screen.queryByRole('button', { name: "Back to Mathews Trader" })).not.toBeInTheDocument();
     });
 });

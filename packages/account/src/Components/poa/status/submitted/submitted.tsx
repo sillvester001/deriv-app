@@ -37,7 +37,7 @@ export const Submitted = ({ needs_poi, redirect_button }: TPoaStatusProps) => {
             >
                 {redirect_button ||
                     (!is_redirected_from_platform && (
-                        <RouteButton button_label={localize("Return to Trader's Hub")} route={routes.traders_hub} />
+                        <RouteButton button_label={localize("Return to Mathews Trader")} route={routes.traders_hub} />
                     ))}
             </IconMessageContent>
         </div>

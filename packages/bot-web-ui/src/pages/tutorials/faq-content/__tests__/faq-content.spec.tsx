@@ -13,9 +13,9 @@ jest.mock('@deriv/bot-skeleton/src/scratch/hooks/block_svg', () => jest.fn());
 
 jest.useFakeTimers();
 
-const what_is_deriv_bot = 'What is Deriv Bot?';
+const what_is_deriv_bot = 'What is Trader Mathews Bot?';
 const deriv_bot_content =
-    "Deriv Bot is a web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'.";
+    "Trader Mathews Bot is a web-based strategy builder for trading digital options. It’s a platform where you can build your own automated trading bot using drag-and-drop 'blocks'.";
 
 describe('<FAQContent />', () => {
     let wrapper: ({ children }: { children: JSX.Element }) => JSX.Element;

@@ -18,6 +18,14 @@ import RunStrategy from '../dashboard/run-strategy';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 
+// Placeholder components - replace with actual imports
+const MathewsTool = () => <div>Mathews Tool Content Placeholder</div>;
+const FreeBots = () => <div>Free Bots Content Placeholder</div>;
+const BeginnersTool = () => <div>Beginners Tool Content Placeholder</div>;
+const MathewsAI = () => <div>Mathews AI Content Placeholder</div>;
+const CopyTrading = () => <div>Copy Trading Content Placeholder</div>;
+const Signals = () => <div>Signals Content Placeholder</div>;
+
 const AppWrapper = observer(() => {
     const { dashboard, load_modal, run_panel, quick_strategy, summary_card } = useDBotStore();
     const {
@@ -36,12 +44,34 @@ const AppWrapper = observer(() => {
     const { is_open } = quick_strategy;
     const { cancel_button_text, ok_button_text, title, message } = dialog_options as { [key: string]: string };
     const { clear } = summary_card;
-    const { DASHBOARD, BOT_BUILDER } = DBOT_TABS;
+    const {
+        DASHBOARD,
+        BOT_BUILDER,
+        MATHEWS_TOOL,
+        FREE_BOTS,
+        BEGINNERS_TOOL,
+        CHART,
+        MATHEWS_AI,
+        COPY_TRADING,
+        SIGNALS,
+        TUTORIAL
+    } = DBOT_TABS;
     const init_render = React.useRef(true);
     const { ui } = useStore();
     const { url_hashed_values, is_desktop } = ui;
 
-    const hash = ['dashboard', 'bot_builder', 'chart', 'tutorial'];
+    const hash = [
+        'dashboard',
+        'bot_builder',
+        'mathews_tool',
+        'free_bots',
+        'beginners_tool',
+        'chart',
+        'mathews_ai',
+        'copy_trading',
+        'signals',
+        'tutorial',
+    ];
 
     let tab_value: number | string = active_tab;
     const GetHashedValue = (tab: number) => {
@@ -157,30 +187,84 @@ const AppWrapper = observer(() => {
                         <div
                             icon='IcDashboardComponentTab'
                             label={<Localize i18n_default_text='Dashboard' />}
-                            id='id-dbot-dashboard'
+                            id={TAB_IDS[DASHBOARD]}
+                            data-hash={hash[DASHBOARD]}
                         >
                             <Dashboard handleTabChange={handleTabChange} />
                         </div>
                         <div
                             icon='IcBotBuilderTabIcon'
                             label={<Localize i18n_default_text='Bot Builder' />}
-                            id='id-bot-builder'
-                        />
+                            id={TAB_IDS[BOT_BUILDER]}
+                            data-hash={hash[BOT_BUILDER]}
+                        >
+                            {active_tab === BOT_BUILDER && <div>Bot Builder Content Area</div>}
+                        </div>
+                        <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Mathews Tool' />}
+                            id={TAB_IDS[MATHEWS_TOOL]}
+                            data-hash={hash[MATHEWS_TOOL]}
+                        >
+                            <MathewsTool />
+                        </div>
+                        <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Free Bots' />}
+                            id={TAB_IDS[FREE_BOTS]}
+                            data-hash={hash[FREE_BOTS]}
+                        >
+                            <FreeBots />
+                        </div>
+                        <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Beginners Tool' />}
+                            id={TAB_IDS[BEGINNERS_TOOL]}
+                            data-hash={hash[BEGINNERS_TOOL]}
+                        >
+                            <BeginnersTool />
+                        </div>
                         <div
                             icon='IcChartsTabDbot'
                             label={<Localize i18n_default_text='Charts' />}
                             id={
                                 is_chart_modal_visible || is_trading_view_modal_visible
                                     ? 'id-charts--disabled'
-                                    : 'id-charts'
+                                    : TAB_IDS[CHART]
                             }
+                            data-hash={hash[CHART]}
                         >
                             <Chart show_digits_stats={false} />
                         </div>
                         <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Mathews AI' />}
+                            id={TAB_IDS[MATHEWS_AI]}
+                            data-hash={hash[MATHEWS_AI]}
+                        >
+                            <MathewsAI />
+                        </div>
+                        <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Copy Trading' />}
+                            id={TAB_IDS[COPY_TRADING]}
+                            data-hash={hash[COPY_TRADING]}
+                        >
+                            <CopyTrading />
+                        </div>
+                        <div
+                            icon='IcBrandDeriv'
+                            label={<Localize i18n_default_text='Signals' />}
+                            id={TAB_IDS[SIGNALS]}
+                            data-hash={hash[SIGNALS]}
+                        >
+                            <Signals />
+                        </div>
+                        <div
                             icon='IcTutorialsTabs'
                             label={<Localize i18n_default_text='Tutorials' />}
-                            id='id-tutorials'
+                            id={TAB_IDS[TUTORIAL]}
+                            data-hash={hash[TUTORIAL]}
                         >
                             <div className='tutorials-wrapper'>
                                 <Tutorial handleTabChange={handleTabChange} />
@@ -192,7 +276,7 @@ const AppWrapper = observer(() => {
             {is_desktop ? (
                 <>
                     <div className='main__run-strategy-wrapper'>
-                        {active_tab !== 4 && (
+                        {active_tab !== TUTORIAL && (
                             <>
                                 <RunStrategy />
                                 <RunPanel />
@@ -203,7 +287,7 @@ const AppWrapper = observer(() => {
                     <TradingViewModal />
                 </>
             ) : (
-                !is_open && active_tab !== 4 && <RunPanel />
+                !is_open && active_tab !== TUTORIAL && <RunPanel />
             )}
             <Dialog
                 cancel_button_text={cancel_button_text || localize('Cancel')}
@@ -212,7 +296,7 @@ const AppWrapper = observer(() => {
                 has_close_icon
                 is_mobile_full_width={false}
                 is_visible={is_dialog_open}
-                onCancel={onCancelButtonClick}
+                onCancel={onCancelButtonClick || undefined}
                 onClose={onCloseDialog}
                 onConfirm={onOkButtonClick || onCloseDialog}
                 portal_element_id='modal_root'

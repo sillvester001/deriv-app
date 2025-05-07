@@ -14,13 +14,13 @@ jest.mock('react-router', () => {
 describe('TradersHubHomeButton', () => {
     const mock_store = mockStore({});
 
-    it("should display the text Trader's Hub in the header", () => {
+    it("should display the text Mathews Trader in the header", () => {
         render(
             <StoreProvider store={mock_store}>
                 <TradersHubHomeButton />
             </StoreProvider>
         );
-        expect(screen.getByText("Trader's Hub")).toBeInTheDocument();
+        expect(screen.getByText("Mathews Trader")).toBeInTheDocument();
     });
 
     it('should have the --active class if in traders hub route', () => {

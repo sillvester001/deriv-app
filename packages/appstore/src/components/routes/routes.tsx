@@ -17,7 +17,7 @@ const Routes: React.FC = observer(() => {
     const { client } = useStore();
     const { is_logged_in, is_logging_in } = client;
 
-    const title_TH = localize("Trader's Hub");
+    const title_TH = localize("Mathews Trader");
     const title_TH_logged_out = localize('Deriv App');
     const show_logged_in_version = is_logged_in || is_logging_in;
 

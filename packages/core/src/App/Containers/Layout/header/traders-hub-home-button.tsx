@@ -31,7 +31,7 @@ const TradersHubHomeButton = observer(() => {
                 <Icon icon={TradersHubIcon} size={is_dark_mode_on ? 15 : 17} />
             </div>
             <Text className='traders-hub-header__tradershub--text'>
-                <Localize i18n_default_text="Trader's Hub" />
+                <Localize i18n_default_text="Mathews Trader" />
             </Text>
         </div>
     );

@@ -92,7 +92,7 @@ export const desktopStepTourGuide = (allWalletsAreAdded: boolean, isRtl: boolean
         target: '.traders-hub-header__tradershub--onboarding--logo',
         title: (
             <Text color='red' size='sm' weight='bold'>
-                <Localize i18n_default_text="Trader's Hub tour" />
+                <Localize i18n_default_text="Mathews Trader tour" />
             </Text>
         ),
         ...stepProps,
@@ -183,7 +183,7 @@ export const mobileStepTourGuide = (allWalletsAreAdded: boolean): Step[] => [
         target: '.traders-hub-header__tradershub--onboarding--logo',
         title: (
             <Text color='red' size='sm' weight='bold'>
-                <Localize i18n_default_text="Trader's Hub tour" />
+                <Localize i18n_default_text="Mathews Trader tour" />
             </Text>
         ),
         ...stepProps,

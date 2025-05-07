@@ -67,7 +67,7 @@ const WalletListHeader: React.FC = () => {
     return (
         <div className='wallets-list-header'>
             <Text align='start' size='xl' weight='bold'>
-                <Localize i18n_default_text="Trader's Hub" />
+                <Localize i18n_default_text="Mathews Trader" />
             </Text>
             {shouldShowSwitcher && (
                 <div className='wallets-list-header__switcher-container'>

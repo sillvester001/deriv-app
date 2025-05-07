@@ -455,7 +455,7 @@ export const BOT_BUILDER_MOBILE: TMobileTourConfig[] = [
 
 export const DBOT_ONBOARDING_MOBILE: TMobileTourConfig[] = [
     {
-        header: localize('Get started on Deriv Bot'),
+        header: localize('Get started on Trader Mathews Bot'),
         content: [
             <Localize
                 key='get-started-on-deriv-bot'
@@ -538,7 +538,7 @@ export const getTourDialogInfo = (is_mobile: boolean) => {
     return is_mobile ? (
         <Localize
             key='tour-dialog-info-mobile'
-            i18n_default_text='Here’s a quick guide on how to use Deriv Bot on the go.'
+            i18n_default_text='Here’s a quick guide on how to use Trader Mathews Bot on the go.'
         />
     ) : (
         <Localize
@@ -566,7 +566,7 @@ export const getTourDialogAction = (is_mobile: boolean) => {
 };
 
 export const onboarding_tour_header = (
-    <Localize key='onboarding-tour-header' i18n_default_text='Get started on Deriv Bot' />
+    <Localize key='onboarding-tour-header' i18n_default_text='Get started on Trader Mathews Bot' />
 );
 
 export const getBotBuilderTourHeader = (is_mobile: boolean) => {

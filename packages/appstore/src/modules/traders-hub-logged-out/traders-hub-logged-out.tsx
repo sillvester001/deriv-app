@@ -40,7 +40,7 @@ const TradersHubLoggedOut = observer(() => {
                 >
                     <GetStartedTradingBanner />
                     <Text size={isDesktop ? 'm' : 'xsm'} weight='bold' color='prominent'>
-                        <Localize i18n_default_text="Trader's Hub" />
+                        <Localize i18n_default_text="Mathews Trader" />
                     </Text>
                     {isDesktop ? (
                         <OrderedPlatformSections isDesktop />

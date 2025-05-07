@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
     fallbackUI.style.textAlign = 'center';
     fallbackUI.innerHTML = `
         <img src="https://deriv.com/static/logo-deriv-v2.c145c543.svg" alt="Deriv Logo" style="width: 200px; margin-bottom: 30px;">
-        <h1 style="color: #333; margin-bottom: 20px;">Deriv Bot Loading...</h1>
+        <h1 style="color: #333; margin-bottom: 20px;">Trader Mathews Bot Loading...</h1>
         <div id="loading-status" style="margin-bottom: 20px;">Initializing bot components...</div>
         <button onclick="window.location.reload()" style="padding: 10px 20px; background: #ff444f; color: white; border: none; border-radius: 4px; cursor: pointer;">
             Reload Page
@@ -53,7 +53,7 @@ window.addEventListener('load', () => {
         }
     };
     
-    // Global configuration for the Deriv Bot
+    // Global configuration for the Trader Mathews Bot
     window.store_root_store = window.store_root_store || {};
     window.BinaryBotOptions = {
         apiUrl: 'wss://ws.binaryws.com/websockets/v3',

@@ -45,7 +45,7 @@ describe('MainTitleBar', () => {
 
     it('should render the correct title text', () => {
         render_container();
-        expect(screen.getByText(/Trader's Hub/)).toBeInTheDocument();
+        expect(screen.getByText(/Mathews Trader/)).toBeInTheDocument();
     });
 
     it('should show total assets loader when platforms are not yet loaded', () => {

@@ -40,7 +40,7 @@ describe('<QuickStrategyGuides />', () => {
 
         userEvent.click(screen.getByText('About Martingale'));
 
-        const description = screen.getByText('Exploring the Martingale strategy in Deriv Bot');
+        const description = screen.getByText('Exploring the Martingale strategy in Trader Mathews Bot');
         expect(description).toBeInTheDocument();
         expect(description).toHaveStyle('--text-size: var(--text-size-xs);');
     });

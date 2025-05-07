@@ -76,7 +76,7 @@ describe('AccountsList', () => {
         rerender(<AccountsList accountsActiveTabIndex={1} onTabClickHandler={jest.fn()} />);
         expect(screen.getAllByText('Options')[0]).toBeInTheDocument();
         expect(screen.getByText('Deriv Trader')).toBeInTheDocument();
-        expect(screen.getByText('Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Trader Mathews Bot')).toBeInTheDocument();
         expect(screen.getByText('SmartTrader')).toBeInTheDocument();
         expect(screen.getByText('Deriv GO')).toBeInTheDocument();
     });

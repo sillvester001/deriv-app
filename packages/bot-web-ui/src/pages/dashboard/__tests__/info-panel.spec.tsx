@@ -32,7 +32,7 @@ describe('InfoPanel', () => {
             wrapper,
         });
         expect(container).toBeInTheDocument();
-        expect(screen.getByText('Welcome to Deriv Bot!')).toBeInTheDocument();
+        expect(screen.getByText('Welcome to Trader Mathews Bot!')).toBeInTheDocument();
     });
 
     it('should render the closing of the info panel on close icon click', () => {
@@ -46,7 +46,7 @@ describe('InfoPanel', () => {
     it('should render the switching of tabs upon clicking the text link', () => {
         render(<InfoPanel />, { wrapper });
 
-        const guide_tab = screen.getByText('Deriv Bot - your automated trading partner');
+        const guide_tab = screen.getByText('Trader Mathews Bot - your automated trading partner');
         userEvent.click(guide_tab);
         expect(mock_DBot_store?.dashboard.setActiveTab(DBOT_TABS.TUTORIAL));
     });
@@ -54,7 +54,7 @@ describe('InfoPanel', () => {
     it('should render the tutorial tab and FAQ tab', () => {
         render(<InfoPanel />, { wrapper });
 
-        const faq_tab = screen.getByText('What is Deriv Bot?');
+        const faq_tab = screen.getByText('What is Trader Mathews Bot?');
         userEvent.click(faq_tab);
         expect(mock_DBot_store?.dashboard.setActiveTabTutorial(1));
     });

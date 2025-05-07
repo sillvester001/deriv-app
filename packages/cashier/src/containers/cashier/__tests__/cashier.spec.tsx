@@ -173,7 +173,7 @@ describe('<Cashier />', () => {
         expect(screen.getByRole('link', { name: 'Fiat onramp' })).toBeInTheDocument();
     });
 
-    it("redirects to trader's hub page if the close button is clicked", () => {
+    it("redirects to Mathews Trader page if the close button is clicked", () => {
         renderWithRouter(<Cashier routes={getRoutesConfig()[0].routes || []} />, mockRootStore);
 
         const close_btn = screen.getByTestId('dt_page_overlay_header_close');

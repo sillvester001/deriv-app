@@ -5,7 +5,7 @@ import { TDescriptionItem } from '../../pages/bot-builder/quick-strategy/types';
 export const MARTINGALE: TDescriptionItem[] = [
     {
         type: 'subtitle',
-        content: [localize('Exploring the Martingale strategy in Deriv Bot')],
+        content: [localize('Exploring the Martingale strategy in Trader Mathews Bot')],
         expanded: true,
         no_collapsible: false,
     },
@@ -16,7 +16,7 @@ export const MARTINGALE: TDescriptionItem[] = [
                 'The Martingale strategy involves increasing your stake after each loss to recoup prior losses with a single successful trade.'
             ),
             localize(
-                "This article explores the Martingale strategy integrated into Deriv Bot, a versatile trading bot designed to trade assets such as forex, commodities, and derived indices. We will delve into the strategy's core parameters, its application, and provide essential takeaways for traders looking to use the bot effectively."
+                "This article explores the Martingale strategy integrated into Trader Mathews Bot, a versatile trading bot designed to trade assets such as forex, commodities, and derived indices. We will delve into the strategy's core parameters, its application, and provide essential takeaways for traders looking to use the bot effectively."
             ),
         ],
     },
@@ -26,7 +26,7 @@ export const MARTINGALE: TDescriptionItem[] = [
     },
     {
         type: 'text',
-        content: [localize('These are the trade parameters used in Deriv Bot with Martingale strategy.')],
+        content: [localize('These are the trade parameters used in Trader Mathews Bot with Martingale strategy.')],
     },
     {
         type: 'text',
@@ -83,7 +83,7 @@ export const MARTINGALE: TDescriptionItem[] = [
             localize('1. Start with the initial stake. Let’s say 1 USD.'),
             localize('2. Select your Martingale multiplier. In this example, it is 2.'),
             localize(
-                '3. If the first trade ends in a loss, Deriv Bot will automatically double your stake for the next trade to 2 USD. Deriv Bot will continue to double the stake after every losing trade.'
+                '3. If the first trade ends in a loss, Trader Mathews Bot will automatically double your stake for the next trade to 2 USD. Trader Mathews Bot will continue to double the stake after every losing trade.'
             ),
             localize(
                 '4. If a trade ends in a profit, the stake for the following trade will be reset to the initial stake amount of 1 USD.'
@@ -94,7 +94,7 @@ export const MARTINGALE: TDescriptionItem[] = [
         type: 'text',
         content: [
             localize(
-                "The idea is that successful trades may recoup previous losses. However, it is crucial to exercise caution as the risk can quickly increase with this strategy. With Deriv Bot, you can minimise your risk by setting a maximum stake. This is an optional risk management feature. Let’s say a maximum stake of 3 USD. If your stake for the next trade is set to exceed 3 USD, your stake will reset to the initial stake of 1 USD. If you didn't set a maximum stake, it would have increased beyond 3 USD."
+                "The idea is that successful trades may recoup previous losses. However, it is crucial to exercise caution as the risk can quickly increase with this strategy. With Trader Mathews Bot, you can minimise your risk by setting a maximum stake. This is an optional risk management feature. Let’s say a maximum stake of 3 USD. If your stake for the next trade is set to exceed 3 USD, your stake will reset to the initial stake of 1 USD. If you didn't set a maximum stake, it would have increased beyond 3 USD."
             ),
         ],
     },
@@ -106,7 +106,7 @@ export const MARTINGALE: TDescriptionItem[] = [
         type: 'text',
         content: [
             localize(
-                "With Deriv Bot, traders can set the profit and loss thresholds to secure potential profits and limit potential losses. This means that the trading bot will automatically stop when either the profit or loss thresholds are reached. It's a form of risk management that can potentially enhance returns. For example, if a trader sets the profit threshold at 100 USD and the strategy exceeds 100 USD of profit from all trades, then the bot will stop running."
+                "With Trader Mathews Bot, traders can set the profit and loss thresholds to secure potential profits and limit potential losses. This means that the trading bot will automatically stop when either the profit or loss thresholds are reached. It's a form of risk management that can potentially enhance returns. For example, if a trader sets the profit threshold at 100 USD and the strategy exceeds 100 USD of profit from all trades, then the bot will stop running."
             ),
         ],
     },
@@ -178,7 +178,7 @@ export const MARTINGALE: TDescriptionItem[] = [
         type: 'text',
         content: [
             localize(
-                "The Martingale strategy in trading may offer substantial gains but also comes with significant risks. With your selected strategy, Deriv Bot provides automated trading with risk management measures like setting initial stake, stake size, maximum stake, profit threshold and loss threshold. It's crucial for traders to assess their risk tolerance, practice in a demo account, and understand the strategy before trading with real money."
+                "The Martingale strategy in trading may offer substantial gains but also comes with significant risks. With your selected strategy, Trader Mathews Bot provides automated trading with risk management measures like setting initial stake, stake size, maximum stake, profit threshold and loss threshold. It's crucial for traders to assess their risk tolerance, practice in a demo account, and understand the strategy before trading with real money."
             ),
         ],
     },

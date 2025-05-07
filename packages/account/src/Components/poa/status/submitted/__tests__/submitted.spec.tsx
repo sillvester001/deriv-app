@@ -31,6 +31,6 @@ describe('<Submitted />', () => {
 
     it('should show ContinueTradingButton if no props are passed', () => {
         renderWithRouter(<Submitted />);
-        expect(screen.getByText("Return to Trader's Hub")).toBeInTheDocument();
+        expect(screen.getByText("Return to Mathews Trader")).toBeInTheDocument();
     });
 });

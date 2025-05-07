@@ -54,7 +54,7 @@ describe('WalletListHeader', () => {
     it('renders header content correctly', () => {
         render(<WalletListHeader />);
 
-        expect(screen.getByText("Trader's Hub")).toBeInTheDocument();
+        expect(screen.getByText("Mathews Trader")).toBeInTheDocument();
         expect(screen.getByText('Demo')).toBeInTheDocument();
         expect(screen.getByText('Real')).toBeInTheDocument();
     });

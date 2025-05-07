@@ -27,18 +27,18 @@ const getMessage = ({
         );
         const description = isVirtual ? (
             <Text align='center' size='md'>
-                <Localize i18n_default_text="Add a demo trading account in Trader's hub to receive funds from this Wallet to start trading." />
+                <Localize i18n_default_text="Add a demo trading account in Mathews Trader to receive funds from this Wallet to start trading." />
             </Text>
         ) : (
             <Text align='center' size='md'>
-                <Localize i18n_default_text="Add a trading account or Wallet in Trader's hub to receive funds from this Wallet." />
+                <Localize i18n_default_text="Add a trading account or Wallet in Mathews Trader to receive funds from this Wallet." />
             </Text>
         );
 
         return {
             actionButton: (
                 <Button borderWidth='sm' onClick={() => history.push('/')} size='lg' textSize='md'>
-                    <Localize i18n_default_text="Back to Trader's hub" />
+                    <Localize i18n_default_text="Back to Mathews Trader" />
                 </Button>
             ),
             description,

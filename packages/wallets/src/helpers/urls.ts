@@ -3,15 +3,14 @@ import { getAccountsFromLocalStorage } from '@deriv/utils';
 import { LocalStorageUtils, URLConstants, URLUtils } from '@deriv-com/utils';
 import { LANDING_COMPANIES } from '../constants/constants';
 
-const isBrowser = () => typeof window !== 'undefined';
+// const derivComUrl = 'deriv.com';
+// const derivMeUrl = 'deriv.me';
+// const derivBeUrl = 'deriv.be';
 
-const derivComUrl = 'deriv.com';
-const derivMeUrl = 'deriv.me';
-const derivBeUrl = 'deriv.be';
-
-const supportedDomains = [derivComUrl, derivMeUrl, derivBeUrl];
-const domainUrlInitial = (isBrowser() && window.location.hostname.split('app.')[1]) || '';
-const domainUrl = supportedDomains.includes(domainUrlInitial) ? domainUrlInitial : derivComUrl;
+// const supportedDomains = [derivComUrl, derivMeUrl, derivBeUrl];
+// const domainUrlInitial = (isBrowser() && window.location.hostname.split('app.')[1]) || '';
+// const domainUrl = supportedDomains.includes(domainUrlInitial) ? domainUrlInitial : derivComUrl;
+const domainUrl = 'my-domain.com'; // Replace 'my-domain.com' with your actual domain
 
 export const derivUrls = Object.freeze({
     BOT_PRODUCTION: `https://dbot.${domainUrl}`,

@@ -29,7 +29,7 @@ describe('Tour Start Dialog', () => {
         mock_DBot_store.dashboard.setActiveTab(DBOT_TABS.DASHBOARD);
 
         render(<TourStartDialog />, { wrapper });
-        expect(screen.getByText('Get started on Deriv Bot')).toBeInTheDocument();
+        expect(screen.getByText('Get started on Trader Mathews Bot')).toBeInTheDocument();
     });
 
     it('render TourStartDialog component for bot builder tour in mobile', () => {
