@@ -15,11 +15,11 @@ import Chart from '../chart';
 import ChartModal from '../chart/chart-modal';
 import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
+import MathewsTool from '../mathews-tool/mathews-tool';
 import Tutorial from '../tutorials';
 import { tour_list } from '../tutorials/dbot-tours/utils';
 
 // Placeholder components - replace with actual imports
-const MathewsTool = () => <div>Mathews Tool Content Placeholder</div>;
 const FreeBots = () => <div>Free Bots Content Placeholder</div>;
 const BeginnersTool = () => <div>Beginners Tool Content Placeholder</div>;
 const MathewsAI = () => <div>Mathews AI Content Placeholder</div>;
@@ -54,7 +54,7 @@ const AppWrapper = observer(() => {
         MATHEWS_AI,
         COPY_TRADING,
         SIGNALS,
-        TUTORIAL
+        TUTORIAL,
     } = DBOT_TABS;
     const init_render = React.useRef(true);
     const { ui } = useStore();
@@ -177,13 +177,7 @@ const AppWrapper = observer(() => {
                         'main__container--active': active_tour && active_tab === DASHBOARD && !is_desktop,
                     })}
                 >
-                    <Tabs
-                        active_index={active_tab}
-                        className='main__tabs'
-                        onTabItemChange={onEntered}
-                        onTabItemClick={handleTabChange}
-                        top
-                    >
+                    <Tabs active_index={active_tab} className='main__tabs' onTabItemClick={handleTabChange} top>
                         <div
                             icon='IcDashboardComponentTab'
                             label={<Localize i18n_default_text='Dashboard' />}

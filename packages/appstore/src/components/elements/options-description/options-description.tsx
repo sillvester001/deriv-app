@@ -20,11 +20,13 @@ const OptionsDescription = ({ is_eu_user }: TOptionsDescription) => {
                 <Localize
                     i18n_default_text='Predict the market, profit if you’re right, risk only what you put in. <0>Learn more</0>'
                     components={[
-                        <StaticUrl
+                        <a
                             key={0}
                             className='options'
                             href='trade-types/options/digital-options/up-and-down/'
-                        />,
+                        >
+                            <Localize i18n_default_text='Learn more' />
+                        </a>,
                     ]}
                 />
             </Text>

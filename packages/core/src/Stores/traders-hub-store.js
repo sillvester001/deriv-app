@@ -403,6 +403,8 @@ export default class TradersHubStore extends BaseStore {
     }
 
     getAvailableCFDAccounts() {
+        return null;
+        /* Commented out original implementation
         const {
             trading_platform_available_accounts,
             mt5_login_list,
@@ -548,6 +550,7 @@ export default class TradersHubStore extends BaseStore {
         this.getAvailableCTraderAccounts();
         this.getAvailableMt5Accounts();
         this.setCombinedCFDMT5Accounts();
+        */
     }
 
     get financial_restricted_countries() {

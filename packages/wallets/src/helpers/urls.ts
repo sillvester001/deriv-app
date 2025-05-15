@@ -10,7 +10,7 @@ import { LANDING_COMPANIES } from '../constants/constants';
 // const supportedDomains = [derivComUrl, derivMeUrl, derivBeUrl];
 // const domainUrlInitial = (isBrowser() && window.location.hostname.split('app.')[1]) || '';
 // const domainUrl = supportedDomains.includes(domainUrlInitial) ? domainUrlInitial : derivComUrl;
-const domainUrl = 'my-domain.com'; // Replace 'my-domain.com' with your actual domain
+const domainUrl = 'deriv-appbot-ca5d812261f2.herokuapp.com'; // Replace 'my-domain.com' with your actual domain
 
 export const derivUrls = Object.freeze({
     BOT_PRODUCTION: `https://dbot.${domainUrl}`,

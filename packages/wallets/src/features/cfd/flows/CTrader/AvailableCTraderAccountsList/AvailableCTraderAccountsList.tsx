@@ -61,25 +61,12 @@ const AvailableCTraderAccountsList: React.FC = () => {
     }, [accountType, activeWallet?.wallet_currency_type, error?.error?.message, status]);
 
     return (
-        <TradingAccountCard disabled={isCFDAccountCreationLoading || isCFDAccountCreationSuccess} onClick={onSubmit}>
-            <TradingAccountCard.Icon>{PlatformDetails.ctrader.icon}</TradingAccountCard.Icon>
-            <TradingAccountCard.Section>
-                <TradingAccountCard.Content>
-                    <Text align='start' size='sm'>
-                        {PlatformDetails.ctrader.title}
-                    </Text>
-                    <Text align='start' size='xs'>
-                        <Localize i18n_default_text='CFDs on financial and derived instruments with copy trading.' />
-                    </Text>
-                </TradingAccountCard.Content>
-                <TradingAccountCard.Button>
-                    {isRtl ? (
-                        <LabelPairedChevronLeftCaptionRegularIcon width={16} />
-                    ) : (
-                        <LabelPairedChevronRightCaptionRegularIcon width={16} />
-                    )}
-                </TradingAccountCard.Button>
-            </TradingAccountCard.Section>
+        <TradingAccountCard disabled={isCFDAccountCreationLoading || isCFDAccountCreationSuccess}>
+            <div>
+                <Text>
+                    <Localize i18n_default_text='CFDs on financial and derived instruments with copy trading.' />
+                </Text>
+            </div>
         </TradingAccountCard>
     );
 };

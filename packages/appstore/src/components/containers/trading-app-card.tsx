@@ -144,16 +144,16 @@ const TradingAppCard = ({
         if (is_deriv_platform) {
             switch (name) {
                 case DERIV_PLATFORM_NAMES.TRADER:
-                    window.open(getStaticUrl(`/dtrader`));
+                    window.open(`/dtrader`);
                     break;
                 case DERIV_PLATFORM_NAMES.DBOT:
-                    window.open(getStaticUrl(`/dbot`));
+                    window.open(`/dbot`);
                     break;
                 case DERIV_PLATFORM_NAMES.SMARTTRADER:
-                    window.open(getUrlSmartTrader());
+                    window.open(`/smarttrader`);
                     break;
                 case DERIV_PLATFORM_NAMES.GO:
-                    window.open(getStaticUrl('/deriv-go'));
+                    window.open(`/deriv-go`);
                     break;
                 default:
             }

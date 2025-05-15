@@ -49,25 +49,25 @@ export const getOptionsAndMultipliersContent = (
         description: localize('The ultimate bot trading platform.'),
         isExternal: true,
         key: 'bot',
-        redirect: appendSearchParamsToUrl(getUrlBot()),
+        redirect: '/bot',
         title: 'Trader Mathews Bot',
     },
-    {
-        availability: 'Non-EU',
-        description: localize('The legacy options trading platform.'),
-        isExternal: true,
-        key: 'smarttrader',
-        redirect: appendSearchParamsToUrl(getUrlSmartTrader()),
-        title: 'SmartTrader',
-    },
-    {
-        availability: 'Non-EU',
-        description: localize('The mobile app for trading multipliers and accumulators.'),
-        isExternal: true,
-        key: 'derivgo',
-        redirect: getStaticUrl('/deriv-go'),
-        title: 'Deriv GO',
-    },
+    // {
+    //     availability: 'Non-EU',
+    //     description: localize('The legacy options trading platform.'),
+    //     isExternal: true,
+    //     key: 'smarttrader',
+    //     redirect: appendSearchParamsToUrl(getUrlSmartTrader()),
+    //     title: 'SmartTrader',
+    // },
+    // {
+    //     availability: 'Non-EU',
+    //     description: localize('The mobile app for trading multipliers and accumulators.'),
+    //     isExternal: true,
+    //     key: 'derivgo',
+    //     redirect: getStaticUrl('/deriv-go'),
+    //     title: 'Deriv GO',
+    // },
 ];
 
 export const ACCOUNT_VERIFICATION_STATUSES = {
