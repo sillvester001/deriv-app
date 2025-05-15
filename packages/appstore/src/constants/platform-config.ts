@@ -61,22 +61,24 @@ export const getAppstorePlatforms = (): PlatformConfig[] => [
     {
         name: getPlatformSettingsAppstore('dbot').name,
         app_desc: localize('The ultimate bot trading platform.'),
-        link_to: appendSearchParamsToUrl(getUrlBot()),
+        link_to: '/bot',
         is_external: true,
     },
-    {
-        name: getPlatformSettingsAppstore('smarttrader').name,
-        app_desc: localize('The legacy options trading platform.'),
-        link_to: appendSearchParamsToUrl(getUrlSmartTrader()),
-        is_external: true,
-    },
-    {
-        name: getPlatformSettingsAppstore('go').name,
-        app_desc: localize('The mobile app for trading multipliers and accumulators.'),
-        link_to: getStaticUrl('/deriv-go'),
-        is_external: true,
-        new_tab: true,
-    },
+    /*
+    // {
+    //     name: getPlatformSettingsAppstore('smarttrader').name,
+    //     app_desc: localize('The legacy options trading platform.'),
+    //     link_to: '/smarttrader',
+    //     is_external: true,
+    // },
+    // {
+    //     name: getPlatformSettingsAppstore('go').name,
+    //     app_desc: localize('The mobile app for trading multipliers and accumulators.'),
+    //     link_to: '/deriv-go',
+    //     is_external: true,
+    //     new_tab: true,
+    // },
+    */
 ];
 
 export const getMFAppstorePlatforms = (): MfPlatformConfig[] => [
@@ -91,7 +93,7 @@ export const getMFAppstorePlatforms = (): MfPlatformConfig[] => [
 
 // The platform names were taken from packages/shared/brand.config.json
 export const DERIV_PLATFORM_NAMES = {
-    TRADER: 'Deriv Trader',
+    TRADER: 'Mathews Trader',
     DBOT: 'Trader Mathews Bot',
     SMARTTRADER: 'SmartTrader',
     GO: 'Deriv GO',
